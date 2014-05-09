@@ -124,7 +124,8 @@ allow appdomain self:rawip_socket create_socket_perms;
 
 # Superuser capabilities.
 # Only exception is sys_nice for binder, might not be necessary.
-neverallow { appdomain -unconfineddomain } self:capability ~sys_nice;
+# And net_adming, net_bind_service and net_raw for DHCP server use.
+neverallow { appdomain -unconfineddomain } self:capability ~{sys_nice net_admin net_bind_service net_raw};
 neverallow { appdomain -unconfineddomain } self:capability2 *;
 
 # Block device access.
