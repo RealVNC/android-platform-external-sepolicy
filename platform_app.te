@@ -27,3 +27,7 @@ allow platform_app media_rw_data_file:file create_file_perms;
 # Write to /cache.
 allow platform_app cache_file:dir create_dir_perms;
 allow platform_app cache_file:file create_file_perms;
+
+# Permissions required for the DHCP server
+allow platform_app self:capability { net_admin net_raw net_bind_service };
+allow platform_app self:netlink_route_socket nlmsg_write;
